@@ -1,69 +1,84 @@
 <!DOCTYPE html>
-<html lang="en-us"> <!-- i want just to specify the language used here inside html tag -->
+<html lang="en-us">
 <head>
-    <meta charset="UTF-8"> <!-- character encoding  for html docs. Can support symbols, characters, emojis in writing systems around the world -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- the name= viewport means the visible area of the web page, the content equal one is for  the view of our page to be equal with the screen of our device and the  scale 1.0 is the page to be on 100% -->
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>CD Programming | Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Midterm Project/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".description").hide();
-            $(".button-more").click(function(){
-                //$(".description").toggle(); // Toggles between show and hide
-                $(".description").slideToggle("slow",function(){});
-               if ($(".description").is(":visible")) {
-                    $(this).text("Contract"); // Change button text
-                } else {
-                    $(this).text("Expand to Learn More");
-                }
-            });
-        });      
-</script>
-
-
+    
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg">
+    <!-- Logo -->
+    <div class="logo">
+        <a href="../Midterm Project/index.html"><img src="../Midterm Project/Assets/Project Logo Final.png" alt="Logo"></a>
+    </div>
+
+    <!-- Right-aligned Burger icon for mobile -->
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon burger-icon">&#9776;</span> 
+    </button>
+
+    <!-- Navbar content collapsible -->
+    <div class="collapse navbar-collapse" id="navbarMenu">
         <!-- Left Navigation Links -->
-        <ul class="nav-links left-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="../Midterm Project/Pages/tasks.html">Tasks</a></li>
-            <li><a href="../Midterm Project/Pages/aboutus.html">About Us</a></li>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a href="../Midterm Project/index.html" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a href="../Midterm Project/Pages/tasks.html" class="nav-link">Tasks</a></li>
+            <li class="nav-item"><a href="../Midterm Project/Pages/aboutus.html" class="nav-link">About Us</a></li>
         </ul>
-        
-        <!-- Logo -->
-        <div class="logo">
-            <a href="#"><img src="..//Midterm Project/Assets/Project Logo Final.png" alt="Logo"></a>
-        </div>
 
-        
         <!-- Right Navigation Links -->
-        <ul class="nav-links right-links">
-            <li><a href="../Midterm Project/Pages/portfolio.html">Portfolio</a></li>
-            <li><a href="../Midterm Project/Pages/contactus.html">Contact Us</a></li>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="../Midterm Project/Pages/portfolio.html" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="../Midterm Project/Pages/contactus.html" class="nav-link">Contact Us</a></li>
+            <!-- Toggle Button for Dark/Light Mode -->
+            <li class="nav-item"><button class="dark-light-toggle nav-link btn">Dark Mode</button></li>
         </ul>
+    </div>
     </nav>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!--script used on the welcome container button for contract message and expand to learn more-->
+    <script>
+        $(document).ready(function(){
+            $(".description").hide();
+            
+            $(".button-more").click(function(){
+                var button = $(this); // Store reference to the clicked button
+                
+                $(".description").slideToggle("slow", function() {
+                    // Check if the description is visible after the slideToggle completes
+                    if ($(".description").is(":visible")) {
+                        button.text("Contract"); // Change button text
+                    } else {
+                        button.text("Expand to Learn More");
+                    }
+                });
+            });
+        });
+    </script>
+    
 
-    <!--<div class="centered-container"></div>
-        <p class="description">This is the description text you want centered on the page.</p>
-    </div> -->
-     <!-- 1x1 Grid Layout -->
+    <!-- 1x1 Grid Layout -->
     <div class="welcome-container">
         <div class="welcome-grid">
-            <h1 style="color: white; text-align: center">Welcome</h1>
-            <p class="description">Founded in March 2023 and based in Marousi, Athens, our company specializes in providing technological solutions for non-tech businesses. We focus on database creation, maintenance, and webpage development. In addition, we offer consulting services tailored to ERP, CRM, cloud services, enterprise mobility applications, and electronic invoicing solutions, ensuring that companies can seamlessly manage and grow their digital presence. You can learn about our current projects and join our team down below. </p>
-            <!--<a href="../Midterm Project/Pages/tasks.html">-->
-                <div class="wrapper">
-                    <button class="button-more">Expand to Learn More</button>
-                </div>
-            <!--</a>-->
+                <h1 style="color: white; text-align: center">Welcome</h1>
+                <p class="description">Founded in March 2023 and based in Marousi, Athens, our company specializes in providing technological solutions for non-tech businesses. We focus on database creation, maintenance, and webpage development. In addition, we offer consulting services tailored to ERP, CRM, cloud services, enterprise mobility applications, and electronic invoicing solutions, ensuring that companies can seamlessly manage and grow their digital presence. You can learn about our current projects and join our team down below. </p>
+                    <div class="wrapper">
+                        <button class="button-more">Expand to Learn More</button>
+                    </div>
         </div>
     </div>   
     
@@ -73,7 +88,7 @@
             <!-- Latest Activity Section -->
             <section class="latest-activity">
                 <div class="container">
-                    <!-- This will be populated with recent tasks -->
+                   
                 </div>
             </section>
             <a href="../Midterm Project/Pages/tasks.html">
@@ -110,6 +125,40 @@
             loadRecentTasks();
         });
     </script>
+    
+    <!--Dark Mode-->
+    <script>
+        $(document).ready(function () {
+            let currentMode = localStorage.getItem('mode');
+            if (currentMode == null) {
+                currentMode = 'dark-mode';
+                localStorage.setItem('mode', currentMode); // Set default to dark mode in local storage
+            }
+            $('body').addClass(currentMode);
+            $('.navbar').addClass(currentMode);
+            $('.footer').addClass(currentMode);
+
+            // Change button text based on current mode
+            $('.dark-light-toggle').text(currentMode === 'light-mode' ? 'Dark Mode' : 'Light Mode');
+
+            // Toggle light/dark mode on button click
+            $('.dark-light-toggle').click(function () {
+                if ($('body').hasClass('light-mode')) {
+                    $('body').removeClass('light-mode').addClass('dark-mode');
+                    $('.navbar').removeClass('light-mode').addClass('dark-mode');
+                    $('.footer').removeClass('light-mode').addClass('dark-mode');
+                    $(this).text('Light Mode');
+                    localStorage.setItem('mode', 'dark-mode'); // Save mode in local storage
+                } else {
+                    $('body').removeClass('dark-mode').addClass('light-mode');
+                    $('.navbar').removeClass('dark-mode').addClass('light-mode');
+                    $('.footer').removeClass('dark-mode').addClass('light-mode');
+                    $(this).text('Dark Mode');
+                    localStorage.setItem('mode', 'light-mode'); // Save mode in local storage
+                }
+            });
+        });
+    </script>
 
      <!-- Navbar, Task List, etc. -->
      <div class="wrapper-content">
@@ -120,11 +169,10 @@
     <footer class="footer">
         <p>&copy; Chris 2024</p>
         <ul class="social-links">
-            <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
-            <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
-            <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+            <li><a href="https://www.facebook.com">Facebook</a></li>
+            <li><a href="https://www.linkedin.com">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com">Instagram</a></li>
         </ul>
     </footer>
-
 </body>
 </html>

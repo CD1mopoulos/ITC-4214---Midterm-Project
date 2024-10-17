@@ -1,0 +1,694 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    background-color: #e1e1e1;
+    background-image: url("../Assets/6057555.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensures the background image covers the entire body */
+    background-position: center; /* Keeps the image centered */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+    min-height: 100vh; /* Full viewport height and ensure that we do not have a gap when minimize the page */
+    font-family: 'Rubik', sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #333; /* Dark background */
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between; /* Space between left and right sections */
+    align-items: center; /* Center items vertically */
+    position: relative;
+}
+
+/* Left and Right Links Styling */
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 20px;
+}
+
+.navbar .nav-links li a {
+    color: white; /* Text color for links */
+    text-decoration: none;
+    font-size: 19px;
+    font-family: "Rubik", sans-serif;
+}
+
+.navbar .nav-links li a:hover {
+    color: orange; 
+}
+
+
+/* Logo Styling */
+.navbar .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Center the logo */
+}
+
+.navbar .logo img {
+    width: 100px; /* Adjust the size of the logo */
+    height: auto;
+}
+/** here ends all the thing i put for navigation. All pages use this script*/
+
+
+/* Centering container for the description */
+.welcome-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* Grid Item Styling */
+.welcome-grid {
+    background-color: none /*rgba(255, 255, 255, 0.406)*/;
+    border: 1px solid orange;
+    padding: 40px 20px;
+    max-width: 650px;
+    width: 650px;
+    margin-left: auto;
+    margin-right: 50px;
+    text-align: justify;
+    /*margin: 0 auto;*/
+    border-radius: 50px; /* for making round the corners*/
+}
+
+/* Centering container for the description */
+.task-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* Grid Item Styling */
+.task-grid {
+    background-color: none /*rgba(255, 255, 255, 0.406)*/;
+    border: 1px solid orange;
+    padding: 40px 20px;
+    max-width: 650px;
+    width: 650px;
+    margin-left: auto;
+    margin-right: 50px;
+    text-align: justify;
+    border-radius: 50px; /* for making round the corners*/
+}
+
+/* Description Styling */
+.description, .latest-tasks {
+    font-size: 24px;
+    font-family: 'Rubik', sans-serif;
+    color: rgb(255, 226, 226);
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+.wrapper {
+    text-align: center;
+}
+.button-more, .button-tasks, .button-task {    
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Rubik", sans-serif;
+    transition: background-color 0.3s ease;
+    position: center;
+}
+
+.custom-button:hover {
+    background-color: darkorange;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    clear: both;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 16px;
+    font-family: "Rubik", sans-serif;
+}
+
+.footer .social-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.footer .social-links li {
+    margin: 0 10px;
+}
+
+.footer .social-links li a {
+    color: orange;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: "Rubik", sans-serif;
+}
+
+.footer .social-links li a:hover {
+    color: darkorange;
+}
+
+/* Sticky footer */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper-content {
+    flex: 1; /* Pushes the footer to the bottom if content is less than the page height */
+    padding-bottom: 50px; 
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Latest Activity Styling */
+.latest-activity {
+    /*background-color: #333; /* Dark background for contrast */
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.latest-activity h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-family: "Rubik", sans-serif;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.activity-item {
+    background-color: #6967e5; /* Slightly transparent orange */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-family: "Rubik", sans-serif;
+}
+
+.activity-item p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.activity-item .date {
+    font-size: 14px;
+    font-style: italic;
+    color: #ddd;
+}
+/*_______________________________________*/
+/* ending of css scripts for my home page*/
+/*_______________________________________*/
+
+.tasks-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.tasks-grid {
+    background-color: none /*rgba(255, 255, 255, 0.406)*/;
+    border: 1px solid orange;
+    color: rgb(255, 226, 226);
+    padding: 20px 20px;
+    max-width: 700px;
+    width: 700px;
+    margin-left: auto;
+    margin-right: 50px;
+    text-align: center;
+    /*margin: 0 auto;*/
+    border-radius: 50px; /* for making round the corners*/
+}
+
+/*for the header to be centered*/
+.tasks-grid h1{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Form group container */
+.form-group {
+    margin-bottom: 20px; /* Adds space between form fields */
+    display: flex;
+    justify-content: center;
+    text-align: center; /* Align the labels to the left */
+}
+
+.form-group label {
+    display: inline-block;
+    width: 100px; /* Adjusts the width of the labels to ensure consistent spacing */
+    text-align: right;
+    margin-right: 5px; /* Adds space between label and input field */
+    margin-top: 10px;
+}
+
+.form-group input, .form-group textarea {
+    width: 60%;
+    padding: 8px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.tasks-list-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/*.tasks-list-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+   
+    /*margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}*/
+/* Grid Item Styling */
+.tasks-list-grid {
+    background-color: none /*rgba(255, 255, 255, 0.406)*/;
+    border: 1px solid orange;
+    color: rgb(255, 226, 226);
+    padding: 20px 20px;
+    max-width: 700px;
+    width: 700px;
+    margin-left: auto;
+    margin-right: 50px;
+    text-align: center;
+    /*margin: 0 auto;*/
+    border-radius: 50px; /* for making round the corners*/
+    /*overflow-y: auto; /* Enable vertical scrollbar */
+    /*max-height: 300px; /* Fixed height to make room for scrollbar */
+    position: relative;
+}
+
+.table-wrapper {
+    max-height: 200px; /* Set your desired height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: block; /* Make this a block element for proper scrolling */
+}
+
+/* Scrollbar styling for WebKit browsers (Chrome, Safari) */
+.table-wrapper::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    border-radius: 10px; /* Rounded corners for the scrollbar track */
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #6180e6; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Rounded corners for the scrollbar handle */
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #1d54eb; /* Darker color on hover */
+}
+
+#status-filter, #sort-name, #sort-date {
+    margin-left: 5px; /* Add space to the left of the dropdown */
+    padding: 3px; /* Padding for the dropdown */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 0.8em; /* Slightly smaller font */
+    justify-content: flex-end;
+    height: 25px;
+    margin: none;
+}
+
+
+
+/* Scrollbar styling for Firefox */
+/*.table-wrapper {
+    scrollbar-width: thin; /* Set scrollbar width */
+/*    scrollbar-color: #888 #f1f1f1; /* Handle color and track color */
+/*}*/
+
+#task-table thead {
+    position: sticky; /* Make the header sticky */
+    top: 0; /* Stick to the top */
+    z-index: 10; /* Ensure it stays above other content */
+    background-color: rgba(255, 166, 0, 0.89);
+}
+
+.tasks-list-grid h1 {
+    margin-bottom: 15px; /* Adds space between the header and the table */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Keep cells tightly together */
+    border-spacing: 10px; /* Space between columns */
+}
+
+th{
+    padding: 5px; /* Add space inside the cells */
+    text-align: center; /* Align text to the left */
+    border: 1px solid orange; /* Keep the existing border */
+    color: rgb(255, 226, 226); /* Keep the original text color */
+    font-weight: bold; /* Keep headers bold */
+    background-color: rgba(255, 165, 0, 0.7); /* Header background */
+    word-wrap: break-word; /* Ensures that long words break */
+    white-space: normal; /* Allows text to wrap onto the next line */
+    max-width: 50px; /* Set a maximum width to constrain the table cells */
+    /*height: 50px;*/
+}
+
+td{
+    padding: 10px; /* Add space inside the cells */
+    text-align: center; /* Align text to the left */
+    border: 1px solid orange; /* Keep the existing border */
+    color: rgb(255, 226, 226); /* Keep the original text color */
+    word-wrap: break-word; /* Ensures that long words break */
+    white-space: normal; /* Allows text to wrap onto the next line */
+    max-width: 50px; /* Set a maximum width to constrain the table cells */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+/* Completed Task Style */
+.completed td{
+    color: gray;
+}
+
+/* Action Buttons */
+button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #111;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/*Part for show less/show more in task table*/
+/* Modal styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scrolling if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px; /* Optional max width */
+    word-wrap: break-word; /* Ensure words wrap inside the modal */
+    overflow-wrap: break-word; /* Break long words */
+    word-break: break-word; /*  breaks long words at any point */
+}
+
+.modal-content h2 {
+    text-align: center; /* Center align the heading */
+    margin-bottom: 20px; /* Add some space below the heading */
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-more-desc {
+    display: block; /* Make the button behave like a block element */
+    margin: 0 auto; /* Automatically adjust margins to center the element */
+    text-align: center;
+}
+
+
+/* About Us Page formating*/
+
+/* Centering container for the description */
+.aboutus-container{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* Grid Item Styling */
+.aboutus-grid {
+    background-color: none;
+    border: 1px solid orange;
+    padding: 40px 20px;
+    max-width: 650px;
+    width: 650px;
+    margin-left: auto;
+    margin: 0 auto; /* Centering the grid */
+    margin-right: 50px;
+    text-align: justify;
+    /*margin: 0 auto;*/
+    border-radius: 50px; /* for making round the corners*/
+}
+
+
+.aboutus-grid h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px; /* Adds space between the heading and paragraph */
+}
+
+.team-section {
+    text-align: center;
+    padding: 50px 50px;
+}
+
+.team-section h2 {
+    font-size: 2.5em;
+    color: orange; /* Title color */
+    margin-bottom: 30px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    justify-items: center; /* Center items in each cell */
+    gap: 20px; 
+}
+
+/* Team Card Styling */
+.team-card {
+    background-color: transparent; /* Ensure the background is transparent */
+    border: 2px solid orange; /* Border color */
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.team-card h3 {
+    color: white; /* Name color */
+    margin: 15px 0 10px;
+}
+
+.team-card .team-role {
+    color: white; /* Role color */
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.team-card .short-bio {
+    font-size: 0.9em;
+    color: white; /* Bio color */
+    margin-top: 10px;
+}
+
+.team-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 2px solid orange; /* Avatar border */
+}
+
+/* Additional styling to ensure correct layout */
+.team-section {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    flex-direction: column; /* Stack elements vertically */
+}
+
+h2 {
+    color: orange; /* Header color */
+    margin-bottom: 10px; /* Space below the header */
+}
+
+/*space for carousel */
+
+
+/*end of about us page*/
+
+.contact-form-container {
+    max-width: 650px; /* Set max width to match welcome-grid */
+    width: 650px; /* Set width to match welcome-grid */
+    margin: 20px auto; /* Center the form */
+    padding: 20px;
+    border: 1px solid orange;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Align text to the left */
+}
+
+.contact-form-container h2 {
+    color: white; /* Set heading color to white */
+    text-align: center; /* Center the heading */
+}
+
+.contact-form-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: white !important; /* Force label text color to white */
+    text-align: left; /* Align label text to the left */
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form-container button {
+    background-color: orange; /* Button color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Add some space above the button */
+    display: block; /* Make the button a block element */
+    margin-left: auto; /* Center the button */
+    margin-right: auto; /* Center the button */
+}
+
+.contact-form-container button:hover {
+    background-color: darkorange; /* Darker button color on hover */
+}
+
+/* Pop-up Modal Styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px; /* Max width for the content */
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.map-container {
+    max-width: 650px; /* Set max width to match welcome-grid */
+    width: 650px; /* Set width to match welcome-grid */
+    margin: 20px auto; /* Center the map container */
+    padding: 20px; /* Add padding around the map container */
+    background-color: orange; /* Set background color to orange */
+    border-radius: 10px; /* Rounded corners */
+    text-align: center; /* Center text inside the container */
+}
+
+.map-container h2 {
+    color: white; /* Set heading color to white */
+    margin-bottom: 15px; /* Space between the heading and iframe */
+}
+
+.map-container iframe {
+    width: 100%; /* Make the iframe responsive */
+    height: 450px; /* Adjust height if needed */
+    border: 0; /* Remove border */
+    border-radius: 10px; /* Optional: rounded corners */
+}
+

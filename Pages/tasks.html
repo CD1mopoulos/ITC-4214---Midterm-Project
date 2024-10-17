@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD Programming | Tasks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <!-- Left Navigation Links -->
+        <ul class="nav-links left-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../Pages/tasks.html">Tasks</a></li>
+            <li><a href="../Pages/aboutus.html">About Us</a></li>
+        </ul>
+        
+        <!-- Logo -->
+        <div class="logo">
+            <a href="#"><img src="../Assets/Project Logo Final.png" alt="Logo"></a>
+        </div>
+
+        <!-- Right Navigation Links -->
+        <ul class="nav-links right-links">
+            <li><a href="../Pages/portfolio.html">Portfolio</a></li>
+            <li><a href="../Pages/contactus.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="tasks-container">
+        <div class="tasks-grid">
+            <h1>Add New Task</h1>
+            <form class="task-form">
+                <div class="form-group">
+                    <label for="task-name">Task Name:</label>
+                    <input type="text" id="task-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-desc">Description:</label>
+                    <textarea id="task-desc" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="task-date">Due Date:</label>
+                    <input type="date" id="task-date" required>
+                </div>
+                
+                <button type="submit" class="button-task">Add Task</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="tasks-list-container">
+        <div class="tasks-list-grid">
+            <!-- Task List -->
+             <h1>Task List</h1>
+             <div class="table-wrapper">
+                <table id="task-table">
+                    <thead>
+                        <tr>
+                        <th>Task Name 
+                            <select id="sort-name">
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </th>
+                        <th>Description</th>
+                        <th>Due Date 
+                            <select id="sort-date">
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </th>
+                        <th>Status
+                             <select id="status-filter">
+                                <option value="all">All</option>
+                                <option value="pending">Pending</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </th>
+                        <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>   
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Sorting and Filter Scripts -->
+    <script>
+        $(document).ready(function() {
+            let isEditing = false;
+            let editingRow = null;
+
+            // Save task to localStorage
+            $('.task-form').on('submit', function(event) {
+                event.preventDefault();
+
+                const taskData = {
+                    name: $('#task-name').val(),
+                    description: $('#task-desc').val(),
+                    date: $('#task-date').val(),
+                    status: "Pending"
+                };
+
+                // Retrieve existing tasks from localStorage, or create an empty array if no tasks exist
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                
+                // If editing an existing task, update it in the array
+                if (isEditing) {
+                    tasks[editingRow.index()] = taskData;
+                    isEditing = false;
+                    editingRow = null;
+                } else {
+                    tasks.push(taskData);
+                }
+
+                // Save tasks array to localStorage
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+
+                // Refresh the task table to display the updated task list
+                renderTaskList();
+                
+                // Reset form fields
+                $('.task-form')[0].reset();
+                $('.button-task').text('Add Task');
+                alert('Task saved in LocalStorage!');
+            });
+
+            // Function to render tasks from localStorage into the table
+            function renderTaskList() {
+                const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                const tbody = $('#task-table tbody');
+                tbody.empty();
+
+                tasks.forEach((task, index) => {
+                    const shortDescription = task.description.length > 10 ? task.description.substring(0, 10) + '...' : task.description;
+                    const moreButton = task.description.length > 10 ? '<button class="button-more-desc">More...</button>' : '';
+
+                    tbody.append(
+                        '<tr>' +
+                        '<td>' + task.name + '</td>' +
+                        '<td class="task-desc" data-full-text="' + task.description + '">' + shortDescription + moreButton + '</td>' +
+                        '<td>' + task.date + '</td>' +
+                        '<td class="status">' + task.status + '</td>' +
+                        '<td>' +
+                        '<button class="complete-task">Completed</button> ' +
+                        '<button class="edit-task">Edit</button> ' +
+                        '<button class="delete-task">Delete</button> ' +
+                        '</td>' +
+                        '</tr>'
+                    );
+                });
+            }
+
+            // Call renderTaskList when the page loads to display stored tasks
+            renderTaskList();
+
+            // Event delegation for Delete, Edit, and Complete task buttons
+            $('#task-table').on('click', '.delete-task', function() {
+                const row = $(this).closest('tr');
+                const index = row.index();
+
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks.splice(index, 1);
+
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+
+                renderTaskList();
+            });
+
+            $('#task-table').on('click', '.edit-task', function() {
+                const row = $(this).closest('tr');
+                const index = row.index();
+
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                const task = tasks[index];
+
+                $('#task-name').val(task.name);
+                $('#task-desc').val(task.description);
+                $('#task-date').val(task.date);
+
+                isEditing = true;
+                editingRow = row;
+
+                $('.button-task').text('Update Task');
+            });
+
+            $('#task-table').on('click', '.complete-task', function() {
+                const row = $(this).closest('tr');
+                const index = row.index();
+
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks[index].status = 'Completed';
+
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+
+                renderTaskList();
+            });
+
+            // Sorting Functions
+            function sortTable(columnIndex, isDate, order) {
+                const rows = $('#task-table tbody tr').get();
+                
+                rows.sort(function(a, b) {
+                    let valA = $(a).children('td').eq(columnIndex).text().toLowerCase();
+                    let valB = $(b).children('td').eq(columnIndex).text().toLowerCase();
+                    
+                    if (isDate) {
+                        valA = new Date(valA);
+                        valB = new Date(valB);
+                    }
+
+                    if (order === 'asc') {
+                        return valA > valB ? 1 : (valA < valB ? -1 : 0);
+                    } else {
+                        return valA < valB ? 1 : (valA > valB ? -1 : 0);
+                    }
+                });
+
+                $.each(rows, function(index, row) {
+                    $('#task-table').children('tbody').append(row);
+                });
+            }
+
+            // Event listener for sorting by task name
+            $('#sort-name').on('change', function() {
+                const order = $(this).val();
+                sortTable(0, false, order);
+            });
+
+            // Event listener for sorting by due date
+            $('#sort-date').on('change', function() {
+                const order = $(this).val();
+                sortTable(2, true, order);
+            });
+
+            // Event listener for status filter
+            $('#status-filter').on('change', function() {
+                const selectedStatus = $(this).val();
+                $('#task-table tbody tr').each(function() {
+                    const statusText = $(this).find('.status').text().toLowerCase();
+                    if (selectedStatus === 'all' || statusText === selectedStatus) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Navbar, Task List, etc. -->
+    <div class="wrapper-content">
+        
+     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; Chris 2024</p>
+        <ul class="social-links">
+            <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+            <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+        </ul>
+    </footer>
+</body>
+
