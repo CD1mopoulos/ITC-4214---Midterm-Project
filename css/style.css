@@ -7,6 +7,8 @@
 
 /* Body styling */
 body {
+    margin: 0;
+    padding: 0;
     background-color: #e1e1e1;
     background-image: url("../Assets/6057555.jpg");
     background-repeat: no-repeat;
@@ -15,12 +17,15 @@ body {
     background-attachment: fixed; /* Keeps the background fixed when scrolling */
     min-height: 100vh; /* Full viewport height and ensure that we do not have a gap when minimize the page */
     font-family: 'Rubik', sans-serif;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions for background and text color */
 }
 
 /* Navbar Styling */
 .navbar {
     background-color: #333; /* Dark background */
-    padding: 40px 20px;
+    padding: 20px 20px;
+    height: auto;
+    transition: background-color 0.3s;
     display: flex;
     justify-content: space-between; /* Space between left and right sections */
     align-items: center; /* Center items vertically */
@@ -28,24 +33,28 @@ body {
 }
 
 /* Left and Right Links Styling */
-.navbar .nav-links {
+.navbar-nav {
     list-style: none;
     display: flex;
 }
 
-.navbar .nav-links li {
+.navbar-nav .nav-item{
     margin-left: 20px;
 }
 
-.navbar .nav-links li a {
+.navbar-nav .nav-link {
     color: white; /* Text color for links */
     text-decoration: none;
     font-size: 19px;
     font-family: "Rubik", sans-serif;
 }
 
-.navbar .nav-links li a:hover {
+.navbar-nav .nav-link:hover {
     color: orange; 
+}
+
+.navbar-nav .nav-link.active {
+    color: orange !important; /* Custom hover/active color */
 }
 
 
@@ -57,54 +66,72 @@ body {
 }
 
 .navbar .logo img {
-    width: 100px; /* Adjust the size of the logo */
+    width: 70px; /* Adjust the size of the logo */
     height: auto;
 }
 /** here ends all the thing i put for navigation. All pages use this script*/
 
-
-/* Centering container for the description */
+/* Centering container with top margin */
 .welcome-container {
     display: grid;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin: 10px auto 10px auto; 
+    padding: 20px;
+    max-width: 100%; /* Make full width to be responsive */
+    width: 100%;
 }
 
-/* Grid Item Styling */
+/* Adding top margin to the welcome grid */
 .welcome-grid {
-    background-color: none /*rgba(255, 255, 255, 0.406)*/;
+    background-color: transparent; /* Use transparent or specify a color */
     border: 1px solid orange;
-    padding: 40px 20px;
-    max-width: 650px;
-    width: 650px;
-    margin-left: auto;
-    margin-right: 50px;
+    padding: 20px 20px;
+    max-width: 650px; /* Set max-width for large screens */
+    width: 100%; /* Allow grid to be responsive */
+    margin: 10px auto; /* Adds 20px top margin and centers horizontally */
     text-align: justify;
-    /*margin: 0 auto;*/
-    border-radius: 50px; /* for making round the corners*/
+    border-radius: 50px; /* Rounded corners */
 }
 
-/* Centering container for the description */
+/* Task container */
 .task-container {
     display: grid;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin: 10px auto 10px auto; /* Adds 60px top margin and 40px bottom margin */
+    padding: 10px;
+    max-width: 100%; /* Make full width to be responsive */
+    width: 100%;
 }
 
-/* Grid Item Styling */
+/* Task grid */
 .task-grid {
-    background-color: none /*rgba(255, 255, 255, 0.406)*/;
+    background-color: transparent; 
     border: 1px solid orange;
-    padding: 40px 20px;
-    max-width: 650px;
-    width: 650px;
-    margin-left: auto;
-    margin-right: 50px;
+    padding: 20px 20px;
+    max-width: 650px; 
+    width: 100%; /* Allow grid to be responsive */
+    margin: 10px auto; /* Adds 20px top margin and centers horizontally */
     text-align: justify;
-    border-radius: 50px; /* for making round the corners*/
+    border-radius: 50px; /* Rounded corners */
 }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .welcome-grid, .task-grid {
+        padding: 30px 15px; /* Reduce padding for smaller screens */
+        max-width: 90%; /* Shrink container width on medium screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .welcome-grid, .task-grid {
+        padding: 20px 10px; /* Further reduce padding for very small screens */
+        max-width: 100%; /* Full width on small screens */
+    }
+}
+
 
 /* Description Styling */
 .description, .latest-tasks {
@@ -234,7 +261,7 @@ body {
 /*_______________________________________*/
 
 .tasks-container {
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
@@ -246,11 +273,10 @@ body {
     color: rgb(255, 226, 226);
     padding: 20px 20px;
     max-width: 700px;
-    width: 700px;
+    width: 100%;
     margin-left: auto;
-    margin-right: 50px;
+    margin-right: auto;
     text-align: center;
-    /*margin: 0 auto;*/
     border-radius: 50px; /* for making round the corners*/
 }
 
@@ -261,12 +287,21 @@ body {
     margin-bottom: 20px;
 }
 
+.task-form {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align form items */
+}
+
+
 /* Form group container */
 .form-group {
+    width: 100%;
     margin-bottom: 20px; /* Adds space between form fields */
     display: flex;
     justify-content: center;
     text-align: center; /* Align the labels to the left */
+    flex-direction: column;
 }
 
 .form-group label {
@@ -275,43 +310,33 @@ body {
     text-align: right;
     margin-right: 5px; /* Adds space between label and input field */
     margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .form-group input, .form-group textarea {
-    width: 60%;
+    width: 100%; 
+    max-width: 600px;
     padding: 8px;
     box-sizing: border-box;
     text-align: left;
 }
 
 .tasks-list-container {
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
 
-/*.tasks-list-container {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-   
-    /*margin: 20px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}*/
 /* Grid Item Styling */
 .tasks-list-grid {
-    background-color: none /*rgba(255, 255, 255, 0.406)*/;
+    background-color: none;
     border: 1px solid orange;
     color: rgb(255, 226, 226);
-    padding: 20px 20px;
+    padding: 20px;
     max-width: 700px;
-    width: 700px;
-    margin-left: auto;
-    margin-right: 50px;
+    width: 100%;
+    margin: auto;
     text-align: center;
     /*margin: 0 auto;*/
     border-radius: 50px; /* for making round the corners*/
@@ -321,9 +346,10 @@ body {
 }
 
 .table-wrapper {
-    max-height: 200px; /* Set your desired height */
+    max-height: 200px; 
     overflow-y: auto; /* Enable vertical scrolling */
     display: block; /* Make this a block element for proper scrolling */
+    width: 100%;
 }
 
 /* Scrollbar styling for WebKit browsers (Chrome, Safari) */
@@ -352,22 +378,20 @@ body {
     font-size: 0.8em; /* Slightly smaller font */
     justify-content: flex-end;
     height: 25px;
-    margin: none;
+    /*margin: none;*/
 }
-
-
-
-/* Scrollbar styling for Firefox */
-/*.table-wrapper {
-    scrollbar-width: thin; /* Set scrollbar width */
-/*    scrollbar-color: #888 #f1f1f1; /* Handle color and track color */
-/*}*/
 
 #task-table thead {
     position: sticky; /* Make the header sticky */
     top: 0; /* Stick to the top */
     z-index: 10; /* Ensure it stays above other content */
     background-color: rgba(255, 166, 0, 0.89);
+}
+
+#task-table {
+    width: 100%; /* Full width of the table */
+    border-collapse: collapse; /* Keep cells tightly together */
+    table-layout: auto;
 }
 
 .tasks-list-grid h1 {
@@ -390,7 +414,6 @@ th{
     word-wrap: break-word; /* Ensures that long words break */
     white-space: normal; /* Allows text to wrap onto the next line */
     max-width: 50px; /* Set a maximum width to constrain the table cells */
-    /*height: 50px;*/
 }
 
 td{
@@ -403,6 +426,53 @@ td{
     max-width: 50px; /* Set a maximum width to constrain the table cells */
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .tasks-list-grid {
+        max-width: 100%; /* Increase the max-width to allow for more space */
+        width: 100%; /* Set width to full */
+    }
+
+    .table-wrapper {
+        overflow-x: auto; /* Allow horizontal scrolling */
+        width: 100%; /* Ensure the container takes full width */
+    }
+
+    #task-table {
+        min-width: 1000px; /* Set a minimum width to increase the table's size */
+    }
+
+    #task-table th {
+        width: 100px; /* Set smaller width for header cells on small screens */
+        max-width: 100px; /* Enforce maximum width on smaller screens */
+    }
+
+    #task-table tbody tr {
+        margin-bottom: 10px;
+        border-bottom: 1px solid orange;
+        padding: 10px 0;
+    }
+
+    #task-table td {
+        width: 100px; /* Set smaller width for data cells */
+        max-width: 100px; /* Max width for data cells */
+    }
+
+    #task-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        width: 50%; /* Set label width */
+        padding-right: 10px;
+    }
+
+    /* Dynamically set data-label content */
+    #task-table td[data-label="Task Name"],
+    #task-table td[data-label="Due Date"],
+    #task-table td[data-label="Status"] select {
+        margin-left: auto;
+    }
 }
 
 /* Completed Task Style */
@@ -442,6 +512,7 @@ button:hover {
 
 .modal-content {
     background-color: #fefefe;
+    color: #000; /* Default text color for light mode */
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
@@ -450,6 +521,17 @@ button:hover {
     word-wrap: break-word; /* Ensure words wrap inside the modal */
     overflow-wrap: break-word; /* Break long words */
     word-break: break-word; /*  breaks long words at any point */
+}
+
+/* Modal content for dark mode */
+body.dark-mode .modal-content {
+    background-color: #333; /* Dark background for the modal */
+    color: #fff; /* Light text for dark mode */
+}
+
+/* Close button styles for dark mode */
+body.dark-mode .close {
+    color: #fff;
 }
 
 .modal-content h2 {
@@ -482,28 +564,49 @@ button:hover {
 /* About Us Page formating*/
 
 /* Centering container for the description */
-.aboutus-container{
+.aboutus-container {
     display: grid;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin: 10px auto; 
+    padding: 20px;
+    margin-top: 30px; /* Keep this consistent with the welcome-container */
 }
 
-/* Grid Item Styling */
 .aboutus-grid {
-    background-color: none;
+    background-color: none; /* Keep background transparent or modify as needed */
     border: 1px solid orange;
-    padding: 40px 20px;
+    padding: 20px 20px;
     max-width: 650px;
-    width: 650px;
-    margin-left: auto;
-    margin: 0 auto; /* Centering the grid */
-    margin-right: 50px;
-    text-align: justify;
-    /*margin: 0 auto;*/
-    border-radius: 50px; /* for making round the corners*/
+    width: 100%;
+    margin: 10px auto;
+    margin-left: auto; /* Remove any specific margin here */
+    margin-right: auto; /* Centering the grid - adjusted */
+    text-align: justify; /* Keep text justified */
+    border-radius: 50px; /* Maintain rounded corners */
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .aboutus-grid {
+        padding: 30px 15px; /* Reduce padding for smaller screens */
+        max-width: 90%; /* Shrink container width on medium screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .aboutus-grid {
+        padding: 20px 10px; /* Further reduce padding for very small screens */
+        max-width: 100%; /* Full width on small screens */
+    }
+    .team-grid {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    }
+
+    .aboutus-grid {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+}
 
 .aboutus-grid h1 {
     color: white;
@@ -518,7 +621,7 @@ button:hover {
 
 .team-section h2 {
     font-size: 2.5em;
-    color: orange; /* Title color */
+    color: white; /* Title color */
     margin-bottom: 30px;
 }
 
@@ -537,6 +640,7 @@ button:hover {
     padding: 20px;
     max-width: 300px;
     text-align: center;
+    margin: 10px; 
 }
 
 .team-card h3 {
@@ -578,14 +682,32 @@ h2 {
     margin-bottom: 10px; /* Space below the header */
 }
 
-/*space for carousel */
+#aboutuscarousel {
+    max-width: 640px; /* Set the maximum width of the carousel */
+    max-height: 427px; /* Set the maximum height of the carousel */
+    margin: 0 auto; /* Center the carousel */
+}
 
+#aboutuscarousel .carousel-inner {
+    height: 427px; 
+}
+
+#aboutuscarousel .carousel-item {
+    height: 100%; /* Ensure carousel items take full height */
+    overflow: hidden; /* Prevent overflow of images */
+}
+
+#aboutuscarousel .carousel-inner img {
+    width: 100%; /* Make images take full width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Maintain aspect ratio and fit the image within the container */
+}
 
 /*end of about us page*/
 
 .contact-form-container {
     max-width: 650px; /* Set max width to match welcome-grid */
-    width: 650px; /* Set width to match welcome-grid */
+    width: 100%; /* Set width to match welcome-grid */
     margin: 20px auto; /* Center the form */
     padding: 20px;
     border: 1px solid orange;
@@ -628,6 +750,7 @@ h2 {
     margin-right: auto; /* Center the button */
 }
 
+
 .contact-form-container button:hover {
     background-color: darkorange; /* Darker button color on hover */
 }
@@ -642,41 +765,55 @@ h2 {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
 }
 
 .popup-content {
-    background-color: #fefefe;
+    background-color: lightblue;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%; 
     max-width: 500px; /* Max width for the content */
     border-radius: 10px;
+    color: black;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .contact-form-container {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+    .popup-content {
+        margin: 10% auto; /* Reduce top margin for small screens */
+        width: 95%; /* Slightly increase width for small screens */
+    }
 }
 
 .close {
-    color: #aaa;
+    color: orange;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: darkorange;
     text-decoration: none;
     cursor: pointer;
 }
 
 .map-container {
     max-width: 650px; /* Set max width to match welcome-grid */
-    width: 650px; /* Set width to match welcome-grid */
+    width: 100%; /* Set width to be responsive */
     margin: 20px auto; /* Center the map container */
     padding: 20px; /* Add padding around the map container */
     background-color: orange; /* Set background color to orange */
+    border: 1px solid orange; /* Add a border for consistency */
     border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
     text-align: center; /* Center text inside the container */
 }
 
@@ -687,8 +824,217 @@ h2 {
 
 .map-container iframe {
     width: 100%; /* Make the iframe responsive */
-    height: 450px; /* Adjust height if needed */
+    height: 450px; /* Set height for the map */
     border: 0; /* Remove border */
-    border-radius: 10px; /* Optional: rounded corners */
+    border-radius: 10px;
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .map-container {
+        padding: 30px 15px; /* Reduce padding for smaller screens */
+        max-width: 90%; /* Shrink container width on medium screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .map-container {
+        padding: 20px 10px; /* Further reduce padding for very small screens */
+        max-width: 100%; /* Full width on small screens */
+    }
+}
+
+
+
+/*ending of contact us page css mod*/
+
+/* Center the portfolio container */
+.portfolio-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* Center the portfolio grid */
+.portfolio-grid {
+    background-color: none;
+    border: 1px solid orange;
+    padding: 40px 20px;
+    max-width: 650px;
+    width: 100%; /* Responsive width */
+    margin-left: auto;
+    margin-right: auto; /* Center horizontally */
+    text-align: justify;
+    border-radius: 50px; /* Rounded corners */
+}
+
+
+.video-container {
+    max-width: 650px; /* Set max width */
+    width: 100%; /* Responsive width */
+    margin: 20px auto; /* Center the container */
+    padding: 20px; /* Add padding around the video container */
+    background-color: orange; /* Set background color to orange */
+    border-radius: 15px; /* Rounded corners, similar to the image */
+    text-align: center; /* Center text and iframe inside the container */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); 
+}
+
+.video-container h2 {
+    color: white; /* Set heading color to white */
+    margin-bottom: 15px; /* Space between the heading and iframe */
+}
+
+.video-container iframe {
+    width: 100%; /* Make the iframe responsive */
+    height: 450px; /* Set a fixed height */
+    border: 0; /* Remove the border */
+    border-radius: 10px;
+}
+
+.star-rating {
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    align-self: center;
+}
+
+.star {
+    font-size: 30px; /* Adjust size as needed */
+    color: gray; /* Default star color */
+    cursor: pointer; /* Show pointer on hover */
+}
+
+.star.hover, .star.selected {
+    color: gold; /* Highlight color for hovered and selected stars */
+}
+
+/*dark/light mode*/
+
+ /* Custom dark mode styles */
+ /* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* Light text color */
+}
+
+.navbar.dark-mode {
+    background-color: #1e1e1e; /* Dark navbar background */
+}
+
+.nav-link.dark-mode {
+    color: #ffffff; /* Light text color for navbar links */
+}
+
+.footer {
+    padding: 20px;
+    text-align: center;
+}
+
+.footer a {
+    color: #ffffff; /* Default text color for footer links */
+}
+
+/* Light Mode Styles */
+body.light-mode {
+    background-color: #ffffff; /* Light background */
+    color: #000000; /* Dark text color */
+}
+
+.navbar.light-mode li a{
+    color: #000000; /* Dark text color for navbar links */
+    text-decoration: none;
+    font-size: 19px;
+    font-family: "Rubik", sans-serif;
+}
+
+.navbar.light-mode {
+        background-color: #f8f9fa; /* Light navbar background */
+}
+
+.footer.light-mode {
+    background-color: #f8f9fa; /* Light footer background */
+    color: #000000; /* Dark text color for footer */
+}
+
+.footer.light-mode a {
+    color: #000000; /* Dark text color for footer links */
+}
+
+
+/* Button styles for the dark/light mode toggle */
+.dark-light-toggle {
+    position: flex;
+    background-color: transparent;
+    border: 1px solid #ffffff; /* Border for the toggle button */
+    border-radius: 10px;
+    padding: 5px 5px;
+    cursor: pointer;
+}
+
+.dark-mode .dark-light-toggle {
+    background-color: #333;
+    color: white;
+}
+
+.light-mode .dark-light-toggle {
+    background-color: transparent;
+    color: black;
+    border: 1px solid black; /* Border for the toggle button */
+}
+
+.light-mode .burger-icon {
+    color: black; 
+    background-color: white; 
+}
+
+
+/* to be deleted*/
+/* Centering container for the description */
+/*.welcome-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    width: 90%;
+}*/
+
+/* Grid Item Styling */
+/*.welcome-grid {
+    background-color: none /*rgba(255, 255, 255, 0.406)*/;
+/*    border: 1px solid orange;
+    padding: 40px 20px;
+    max-width: 650px;
+    width: 650px;
+    margin-left: auto;
+    margin-right: 50px;
+    text-align: justify;
+    /*margin: 0 auto;*/
+/*    border-radius: 50px; /* for making round the corners*/
+/*}*/
+
+/* Centering container for the description */
+/*.task-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    width: 90%;
+}*/
+
+/* Grid Item Styling */
+/*.task-grid {
+    background-color: none /*rgba(255, 255, 255, 0.406)*/;
+/*    border: 1px solid orange;
+    padding: 40px 20px;
+    max-width: 650px;
+    width: 650px;
+    margin-left: auto;
+    margin-right: 50px;
+    text-align: justify;
+    border-radius: 50px; /* for making round the corners*/
+/*}*/
