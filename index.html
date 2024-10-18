@@ -1,119 +1,178 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BackpackPacker</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&amp;family=Work+Sans:wght@100..900&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="../../assets/style.css"
-      type="text/css"
-      media="all"
-    />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <header class="siteheader">
-      <div class="site-title">BackpackPacker</div>
-      <div class="site-description">All backpack packing, all the time.</div>
-    </header>
-    <main class="maincontent">
-      <div class="page-header">
-        <h2 class="page-header__heading">A pack for every purpose</h2>
-        <p>
-          If you're carrying a heavy load, you can't find a better tool than a
-          backpack. Distributing the weight evenly across your shoulders, back,
-          and hips, the backpack lets you use the natural frame of your body to
-          literally <em>shoulder</em> the weight while your legs do the
-          carrying.
-        </p>
-      </div>
-      <article class="backpack" id="pack01">
-        <figure class="backpack__image">
-          <img src="../../assets/images/everyday.svg" alt="" loading="lazy" />
-        </figure>
-        <h1 class="backpack__name">Everyday Backpack</h1>
-        <ul class="backpack__features">
-          <li class="feature backpack__volume">Volume:<span> 30l</span></li>
-          <li class="feature backpack__color">Color:<span> grey</span></li>
-          <li class="feature backpack__age">Age:<span> 684 days old</span></li>
-          <li class="feature backpack__pockets">
-            Number of pockets:<span> 15</span>
-          </li>
-          <li class="feature backpack__strap" data-side="left">
-            Left strap length: <span>26 inches</span>
-            <form class="leftlength" data-children-count="1">
-              <input
-                type="number"
-                name="leftLength"
-                placeholder="New left length"
-              />
-              <button>Update</button>
-            </form>
-          </li>
-          <li class="feature backpack__strap" data-side="right">
-            Right strap length: <span>26 inches</span>
-            <form class="rightlength" data-children-count="1">
-              <input
-                type="number"
-                name="rightLength"
-                placeholder="New right length"
-              />
-              <button>Update</button>
-            </form>
-          </li>
-          <li class="feature backpack__lid">Lid status: <span>closed</span></li>
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>CD Programming | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Midterm Project/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+</head>
+
+<body>
+
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg">
+    <!-- Logo -->
+    <div class="logo">
+        <a href="../Midterm Project/index.html"><img src="../Midterm Project/Assets/Project Logo Final.png" alt="Logo"></a>
+    </div>
+
+    <!-- Right-aligned Burger icon for mobile -->
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon burger-icon">&#9776;</span> 
+    </button>
+
+    <!-- Navbar content collapsible -->
+    <div class="collapse navbar-collapse" id="navbarMenu">
+        <!-- Left Navigation Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a href="../Midterm Project/index.html" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a href="../Midterm Project/Pages/tasks.html" class="nav-link">Tasks</a></li>
+            <li class="nav-item"><a href="../Midterm Project/Pages/aboutus.html" class="nav-link">About Us</a></li>
         </ul>
-        <button class="lid-toggle">Open lid</button>
-      </article>
-      <article class="backpack" id="pack02">
-        <figure class="backpack__image">
-          <img src="../../assets/images/frog.svg" alt="" loading="lazy" />
-        </figure>
-        <h1 class="backpack__name">Frog Backpack</h1>
-        <ul class="backpack__features">
-          <li class="feature backpack__volume">Volume:<span> 8l</span></li>
-          <li class="feature backpack__color">Color:<span> green</span></li>
-          <li class="feature backpack__age">Age:<span> 369 days old</span></li>
-          <li class="feature backpack__pockets">
-            Number of pockets:<span> 3</span>
-          </li>
-          <li class="feature backpack__strap" data-side="left">
-            Left strap length: <span>10 inches</span>
-            <form class="leftlength" data-children-count="1">
-              <input
-                type="number"
-                name="leftLength"
-                placeholder="New left length"
-              />
-              <button>Update</button>
-            </form>
-          </li>
-          <li class="feature backpack__strap" data-side="right">
-            Right strap length: <span>10 inches</span>
-            <form class="rightlength" data-children-count="1">
-              <input
-                type="number"
-                name="rightLength"
-                placeholder="New right length"
-              />
-              <button>Update</button>
-            </form>
-          </li>
-          <li class="feature backpack__lid">Lid status: <span>closed</span></li>
+
+        <!-- Right Navigation Links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="../Midterm Project/Pages/portfolio.html" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="../Midterm Project/Pages/contactus.html" class="nav-link">Contact Us</a></li>
+            <!-- Toggle Button for Dark/Light Mode -->
+            <li class="nav-item"><button class="dark-light-toggle nav-link btn">Dark Mode</button></li>
         </ul>
-        <button class="lid-toggle">Open lid</button>
-      </article>
-    </main>
-    <footer class="sitefooter">
-      <p>
-        Demo project for JavaScript Essential Training, a LinkedIn Learning
-        course.
-      </p>
+    </div>
+    </nav>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!--script used on the welcome container button for contract message and expand to learn more-->
+    <script>
+        $(document).ready(function(){
+            $(".description").hide();
+            
+            $(".button-more").click(function(){
+                var button = $(this); // Store reference to the clicked button
+                
+                $(".description").slideToggle("slow", function() {
+                    // Check if the description is visible after the slideToggle completes
+                    if ($(".description").is(":visible")) {
+                        button.text("Contract"); // Change button text
+                    } else {
+                        button.text("Expand to Learn More");
+                    }
+                });
+            });
+        });
+    </script>
+    
+
+    <!-- 1x1 Grid Layout -->
+    <div class="welcome-container">
+        <div class="welcome-grid">
+                <h1 style="color: white; text-align: center">Welcome</h1>
+                <p class="description">Founded in March 2023 and based in Marousi, Athens, our company specializes in providing technological solutions for non-tech businesses. We focus on database creation, maintenance, and webpage development. In addition, we offer consulting services tailored to ERP, CRM, cloud services, enterprise mobility applications, and electronic invoicing solutions, ensuring that companies can seamlessly manage and grow their digital presence. You can learn about our current projects and join our team down below. </p>
+                    <div class="wrapper">
+                        <button class="button-more">Expand to Learn More</button>
+                    </div>
+        </div>
+    </div>   
+    
+    <div class="task-container">
+        <div class="task-grid">
+            <h1 style="color: white; text-align: center">Latest Activities</h1>
+            <!-- Latest Activity Section -->
+            <section class="latest-activity">
+                <div class="container">
+                   
+                </div>
+            </section>
+            <a href="../Midterm Project/Pages/tasks.html">
+                <div class="wrapper">
+                    <button class="button-tasks">Tasks</button>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            // Function to load recent tasks
+            function loadRecentTasks() {
+                const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                const recentTasks = tasks.slice(-5).reverse(); // Get the last 5 tasks
+                const activityContainer = $('.latest-activity .container');
+    
+                // Clear existing activity items
+                activityContainer.empty();
+    
+                // Add each task to the activity container
+                recentTasks.forEach((task, index) => {
+                    activityContainer.append(
+                        `<div class="activity-item">
+                            <p><strong>Task ${index + 1}:</strong> ${task.name} - Status: ${task.status}</p>
+                            <span class="date">Due Date: ${task.date}</span>
+                        </div>`
+                    );
+                });
+            }
+    
+            // Load recent tasks on page load
+            loadRecentTasks();
+        });
+    </script>
+    
+    <!--Dark Mode-->
+    <script>
+        $(document).ready(function () {
+            let currentMode = localStorage.getItem('mode');
+            if (currentMode == null) {
+                currentMode = 'dark-mode';
+                localStorage.setItem('mode', currentMode); // Set default to dark mode in local storage
+            }
+            $('body').addClass(currentMode);
+            $('.navbar').addClass(currentMode);
+            $('.footer').addClass(currentMode);
+
+            // Change button text based on current mode
+            $('.dark-light-toggle').text(currentMode === 'light-mode' ? 'Dark Mode' : 'Light Mode');
+
+            // Toggle light/dark mode on button click
+            $('.dark-light-toggle').click(function () {
+                if ($('body').hasClass('light-mode')) {
+                    $('body').removeClass('light-mode').addClass('dark-mode');
+                    $('.navbar').removeClass('light-mode').addClass('dark-mode');
+                    $('.footer').removeClass('light-mode').addClass('dark-mode');
+                    $(this).text('Light Mode');
+                    localStorage.setItem('mode', 'dark-mode'); // Save mode in local storage
+                } else {
+                    $('body').removeClass('dark-mode').addClass('light-mode');
+                    $('.navbar').removeClass('dark-mode').addClass('light-mode');
+                    $('.footer').removeClass('dark-mode').addClass('light-mode');
+                    $(this).text('Dark Mode');
+                    localStorage.setItem('mode', 'light-mode'); // Save mode in local storage
+                }
+            });
+        });
+    </script>
+
+     <!-- Navbar, Task List, etc. -->
+     <div class="wrapper-content">
+        
+     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; Chris 2024</p>
+        <ul class="social-links">
+            <li><a href="https://www.facebook.com">Facebook</a></li>
+            <li><a href="https://www.linkedin.com">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com">Instagram</a></li>
+        </ul>
     </footer>
-    <!-- Code injected by live-server -->
-  </body>
+</body>
 </html>
