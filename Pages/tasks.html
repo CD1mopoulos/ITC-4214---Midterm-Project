@@ -8,31 +8,44 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar">
-        <!-- Left Navigation Links -->
-        <ul class="nav-links left-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../Pages/tasks.html">Tasks</a></li>
-            <li><a href="../Pages/aboutus.html">About Us</a></li>
-        </ul>
-        
+    <nav class="navbar navbar-expand-lg">
         <!-- Logo -->
         <div class="logo">
-            <a href="#"><img src="../Assets/Project Logo Final.png" alt="Logo"></a>
+            <a href="../index.html"><img src="../Assets/Project Logo Final.png" alt="Logo"></a>
         </div>
-
-        <!-- Right Navigation Links -->
-        <ul class="nav-links right-links">
-            <li><a href="../Pages/portfolio.html">Portfolio</a></li>
-            <li><a href="../Pages/contactus.html">Contact Us</a></li>
-        </ul>
+    
+        <!-- Right-aligned Burger icon for mobile -->
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon burger-icon">&#9776;</span> 
+        </button>
+    
+        <!-- Navbar content collapsible -->
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <!-- Left Navigation Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="../Pages/tasks.html" class="nav-link active">Tasks</a></li>
+                <li class="nav-item"><a href="../Pages/aboutus.html" class="nav-link">About Us</a></li>
+            </ul>
+    
+            <!-- Right Navigation Links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="../Pages/portfolio.html" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="../Pages/contactus.html" class="nav-link">Contact Us</a></li>
+                <!-- Toggle Button for Dark/Light Mode -->
+                <li class="nav-item"><button class="dark-light-toggle nav-link btn">Dark Mode</button></li>
+            </ul>
+        </div>
     </nav>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <div class="tasks-container">
         <div class="tasks-grid">
@@ -50,11 +63,11 @@
                     <label for="task-date">Due Date:</label>
                     <input type="date" id="task-date" required>
                 </div>
-                
                 <button type="submit" class="button-task">Add Task</button>
             </form>
         </div>
     </div>
+    
 
     <div class="tasks-list-container">
         <div class="tasks-list-grid">
@@ -88,13 +101,76 @@
                         </tr>
                     </thead>
                     <tbody>   
-
+                        <!-- Rows will be dynamically generated -->
                     </tbody>
                 </table>
             </div>
         </div>
-
     </div>
+    
+    <!-- Modal -->
+    <div id="descriptionModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Task Description</h2>
+            <p id="full-description"></p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Show full description in modal on "More..." button click
+            $('#task-table').on('click', '.button-more-desc', function () {
+                const fullDescription = $(this).parent().data('full-text');
+                $('#full-description').text(fullDescription);  // Set modal content
+                $('#descriptionModal').fadeIn();  // Show modal
+            });
+        
+            // Close the modal when the user clicks on the close button or anywhere outside the modal
+            $('.close, .modal').on('click', function () {
+                $('#descriptionModal').fadeOut();  // Hide modal
+            });
+        
+            // Prevent modal content click from closing modal
+            $('.modal-content').on('click', function (event) {
+                event.stopPropagation();
+            });
+        });
+    </script>
+
+    <!--Dark Mode-->
+    <script>
+        $(document).ready(function () {
+            let currentMode = localStorage.getItem('mode');
+            if (currentMode == null) {
+                currentMode = 'dark-mode';
+                localStorage.setItem('mode', currentMode); // Set default to dark mode in local storage
+            }
+            $('body').addClass(currentMode);
+            $('.navbar').addClass(currentMode);
+            $('.footer').addClass(currentMode);
+
+            // Change button text based on current mode
+            $('.dark-light-toggle').text(currentMode === 'light-mode' ? 'Dark Mode' : 'Light Mode');
+
+            // Toggle light/dark mode on button click
+            $('.dark-light-toggle').click(function () {
+                if ($('body').hasClass('light-mode')) {
+                    $('body').removeClass('light-mode').addClass('dark-mode');
+                    $('.navbar').removeClass('light-mode').addClass('dark-mode');
+                    $('.footer').removeClass('light-mode').addClass('dark-mode');
+                    $(this).text('Light Mode');
+                    localStorage.setItem('mode', 'dark-mode'); // Save mode in local storage
+                } else {
+                    $('body').removeClass('dark-mode').addClass('light-mode');
+                    $('.navbar').removeClass('dark-mode').addClass('light-mode');
+                    $('.footer').removeClass('dark-mode').addClass('light-mode');
+                    $(this).text('Dark Mode');
+                    localStorage.setItem('mode', 'light-mode'); // Save mode in local storage
+                }
+            });
+        });
+    </script>
 
     <!-- Sorting and Filter Scripts -->
     <script>
@@ -134,7 +210,6 @@
                 // Reset form fields
                 $('.task-form')[0].reset();
                 $('.button-task').text('Add Task');
-                alert('Task saved in LocalStorage!');
             });
 
             // Function to render tasks from localStorage into the table
@@ -275,4 +350,5 @@
         </ul>
     </footer>
 </body>
+</html>
 
