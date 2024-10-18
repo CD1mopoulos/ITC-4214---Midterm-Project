@@ -8,50 +8,71 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar">
-        <!-- Left Navigation Links -->
-        <ul class="nav-links left-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../Pages/tasks.html">Tasks</a></li>
-            <li><a href="../Pages/aboutus.html">About Us</a></li>
-        </ul>
-        
+    <nav class="navbar navbar-expand-lg">
         <!-- Logo -->
         <div class="logo">
-            <a href="#"><img src="../Assets/Project Logo Final.png" alt="Logo"></a>
+            <a href="../index.html"><img src="../Assets/Project Logo Final.png" alt="Logo"></a>
+        </div>
+    
+        <!-- Right-aligned Burger icon for mobile -->
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon burger-icon">&#9776;</span> 
+        </button>
+    
+        <!-- Navbar content collapsible -->
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <!-- Left Navigation Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="../Pages/tasks.html" class="nav-link">Tasks</a></li>
+                <li class="nav-item"><a href="../Pages/aboutus.html" class="nav-link">About Us</a></li>
+            </ul>
+    
+            <!-- Right Navigation Links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a href="../Pages/portfolio.html" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="../Pages/contactus.html" class="nav-link active">Contact Us</a></li>
+                <!-- Toggle Button for Dark/Light Mode -->
+                <li class="nav-item"><button class="dark-light-toggle nav-link btn">Dark Mode</button></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- Contact Form Section -->
+    <div class="contact-form-container">
+    <h2>Contact Us</h2>
+    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required class="form-control">
         </div>
 
-        
-        <!-- Right Navigation Links -->
-        <ul class="nav-links right-links">
-            <li><a href="../Pages/portfolio.html">Portfolio</a></li>
-            <li><a href="../Pages/contactus.html">Contact Us</a></li>
-        </ul>
-    </nav>
-    <!-- Contact Form Section -->
-     <div class="contact-form-container">
-        <h2>Contact Us</h2>
-        <form id="contactForm" onsubmit="handleFormSubmit(event)">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required>
-    
+        <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-    
+            <input type="email" id="email" name="email" placeholder="Enter your email" required class="form-control">
+        </div>
+
+        <div class="form-group">
             <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" placeholder="Enter the subject" required>
-    
+            <input type="text" id="subject" name="subject" placeholder="Enter the subject" required class="form-control">
+        </div>
+
+        <div class="form-group">
             <label for="message">Message:</label>
-            <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
-            
-            <button type="submit">Send</button>
-        </form>
+            <textarea id="message" name="message" placeholder="Write your message here" required class="form-control"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
     </div>
     
     <!-- Pop-up Modal -->
@@ -66,15 +87,16 @@
     <!-- Google Maps Embed -->
     <div class="map-container">
         <h2>Our Location</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2732.974293246148!2d23.788483675346892!3d38.04470537191851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a198c12a6782d5%3A0xb85e05ffeb3b20a0!2sThe%20Mall%20Athens!5e1!3m2!1sel!2sgr!4v1728220979412!5m2!1sel!2sgr" 
-            width="600" 
-            height="450" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <div class="embed-responsive embed-responsive-16by9"> <!-- Responsive container -->
+            <iframe class="embed-responsive-item" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2732.974293246148!2d23.788483675346892!3d38.04470537191851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a198c12a6782d5%3A0xb85e05ffeb3b20a0!2sThe%20Mall%20Athens!5e1!3m2!1sel!2sgr!4v1728220979412!5m2!1sel!2sgr" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
     </div>
+
     
     <script>
         function handleFormSubmit(event) {
@@ -98,14 +120,39 @@
         }
     </script>
 
+    <!--Dark Mode-->
+    <script>
+        $(document).ready(function () {
+            let currentMode = localStorage.getItem('mode');
+            if (currentMode == null) {
+                currentMode = 'dark-mode';
+                localStorage.setItem('mode', currentMode); // Set default to dark mode in local storage
+            }
+            $('body').addClass(currentMode);
+            $('.navbar').addClass(currentMode);
+            $('.footer').addClass(currentMode);
 
+            // Change button text based on current mode
+            $('.dark-light-toggle').text(currentMode === 'light-mode' ? 'Dark Mode' : 'Light Mode');
 
-
-
-
-
-
-
+            // Toggle light/dark mode on button click
+            $('.dark-light-toggle').click(function () {
+                if ($('body').hasClass('light-mode')) {
+                    $('body').removeClass('light-mode').addClass('dark-mode');
+                    $('.navbar').removeClass('light-mode').addClass('dark-mode');
+                    $('.footer').removeClass('light-mode').addClass('dark-mode');
+                    $(this).text('Light Mode');
+                    localStorage.setItem('mode', 'dark-mode'); // Save mode in local storage
+                } else {
+                    $('body').removeClass('dark-mode').addClass('light-mode');
+                    $('.navbar').removeClass('dark-mode').addClass('light-mode');
+                    $('.footer').removeClass('dark-mode').addClass('light-mode');
+                    $(this).text('Dark Mode');
+                    localStorage.setItem('mode', 'light-mode'); // Save mode in local storage
+                }
+            });
+        });
+    </script>
 
     <!-- Navbar, Task List, etc. -->
      <div class="wrapper-content">
@@ -121,3 +168,4 @@
         </ul>
     </footer>
 </body>
+</html>
